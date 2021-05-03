@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>KB3</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Days+One">
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <section class="register-photo">
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <form method="post">
+                <h2 class="text-center"><strong>Rick &amp; Morty</strong></h2>
+                <div class="form-group">
+                    <p style="font-family: Acme, sans-serif;">Input Episode Here</p><input class="form-control" type="text" id="srch-cntrl">
+                </div>
+                <div class="form-group"><button class="btn btn-primary btn-block" type="button" style="background: rgb(138,218,60);font-family: 'Days One', sans-serif;color: rgb(14,56,66);" id="explore">Search Episode</button></div>
+                <div class="form-group">
+                    <p style="font-family: Acme, sans-serif;">Episode's Name</p>
+                    <div class="text-center tp-1" style="background: #8ada3c;padding: 3px;">
+                        <h1 style="font-family: Acme, sans-serif;font-size: 25px;color: rgb(14,56,66);margin: 4px;" id="displayname"></h1>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p style="font-family: Acme, sans-serif;">Airing Date</p>
+                    <div class="tp-1" style="background: rgb(138,218,60);padding: 3px;margin: 0px;">
+                        <h1 style="text-align: center;font-size: 27px;font-family: Acme, sans-serif;color: rgb(14,56,66);margin: 4px;" id="displayair"></h1>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer class="footer-basic">
+        <p class="copyright">Reza Ananda P © 2021</p>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        var xOmni = document.getElementById('explore');
+        xOmni.addEventListener('click', weaponery);
+
+        function weaponery() {
+            fetch('https://rickandmortyapi.com/api/episode/' + document.getElementById('srch-cntrl').value).then(response => response.json()).then(data => {
+                console.log(data.name);
+                document.getElementById('displayname').innerHTML = data.name;
+                document.getElementById('displayair').innerHTML = data.air_date;
+            })
+        }
+    </script>
+</body>
+
+</html>
